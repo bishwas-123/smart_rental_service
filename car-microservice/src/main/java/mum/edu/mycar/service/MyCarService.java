@@ -1,18 +1,13 @@
 package mum.edu.mycar.service;
-import mum.edu.mycar.domain.MyCar;
-import org.springframework.stereotype.Service;
+import mum.edu.mycar.domain.Mycar;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
-@Service
-@Transactional
+
 public interface MyCarService {
-    List<MyCar> getAll();
-    void save(MyCar car);
+    List<Mycar> getAll();
+    void save(Mycar car);
     void delete(Long id);
-    void update(MyCar car);
-    MyCar get(Long id);
-
-
+    void update(Mycar car);
+    Mycar get(Long id);
 }
