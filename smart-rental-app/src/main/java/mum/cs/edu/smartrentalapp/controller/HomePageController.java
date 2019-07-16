@@ -1,5 +1,4 @@
 package mum.cs.edu.smartrentalapp.controller;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,4 +10,7 @@ public class HomePageController {
     public String homepage() {
         return "views/home/index";
     }
+
+
+
 }

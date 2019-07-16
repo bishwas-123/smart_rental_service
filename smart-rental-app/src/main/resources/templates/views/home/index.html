@@ -21,12 +21,12 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <form role="search" method="get" class="advance_search_query" action="/house-rent/">
+                                            <form role="search" method="post" class="advance_search_query" action="cars/add/">
                                                 <div class="form-bg border-radius">
                                                     <div class="form-content">
                                                         <div class="form-group living-area">
                                                             <label>Zip Code</label>
-                                                            <input class="tags search-field" type="text" value="" name="s" placeholder="Where do you want to Search?">
+                                                            <input class="tags search-field" type="text" value="" name="zipcode" placeholder="Where do you want to Search?">
                                                             <input type="hidden" name="post_type" value="rental" />
                                                         </div><!-- /.form-group -->
 
@@ -34,7 +34,7 @@
 
                                                         <div class="form-group category-type">
                                                             <label>Category</label>
-                                                            <select name="cal_slug">
+                                                            <select name="category">
                                                                 <option value="apartments">Car</option>
                                                                 <option value="apartments">Apartments</option>
                                                                 <option value="factory">Hotel</option>
@@ -219,6 +219,61 @@
 
         </div>
         </div>      </div>
+
+    <footer class="footer-area" style="background-image:url(/images/footer-bg.png ); background-color: #ffffff">
+        <footer class="container">
+            <div class="row">
+                <div class="widget-area sidebar-footer-1 col-sm-6 col-md-col-sm-4 col-md-4">
+                    <div id="houserent_about_me-2" class="widget widget_houserent_about_me"><div class="widget-title-area"><h3 class="widget-title" style="color: #fca22a">About Us</h3></div>
+
+                        <div class="widget-about-content">
+                            <img th:src="@{/images/footer-logo.png}" alt="About Us">                <p>Renting, also known as hiring or letting, is an agreement where a payment is made for the temporary use of a good, service or property owned by another. A gross lease is when the tenant pays a flat rental amount and the landlord pays for all property charges regularly incurred by the ownership.</p>                <a href='#' class='button'>More</a>            </div><!-- /.widget-content -->
+                    </div>                                    </div>
+                <div class="widget-area sidebar-footer-2 col-sm-6 col-md-col-sm-6 col-md-col-sm-4 col-md-4">
+                    <div id="houserent_rental_category-3" class="widget widget_houserent_rental_category"><div class="widget-title-area"><h3 class="widget-title" style="color: #fca22a">Place Category</h3></div>                                  <ul>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Apartments                              </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Factory                             </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Family House                                </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Office                              </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Sublet                              </a>
+                        </li>
+                        <li>
+                            Flat for Rent
+                            <a href="#">
+                                Ware House                              </a>
+                        </li>
+                    </ul>
+                    </div>                                    </div>
+
+
+
+            </div><!-- /.container -->
+
+    </footer>
+
+
+
+
+
 </th:block>
 
 
