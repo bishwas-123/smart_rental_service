@@ -1,6 +1,7 @@
 package mum.cs.edu.smartrentalapp.service;
+
 import mum.cs.edu.smartrentalapp.domain.Mycar;
-import mum.cs.edu.smartrentalapp.domain.SearchFilter;
+import mum.cs.edu.smartrentalapp.domain.SearchFIlter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -32,7 +33,7 @@ public class MyCarServiceImpl implements  MyCarService {
 
 
     @Override
-    public List<Mycar> filterList(SearchFilter filter){
+    public List<Mycar> filterList(SearchFIlter filter){
         String zip=filter.getZipcode();
         String min=filter.getMin_price();
         String max=filter.getMax_price();

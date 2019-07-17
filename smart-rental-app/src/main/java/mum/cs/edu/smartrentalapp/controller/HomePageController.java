@@ -1,6 +1,6 @@
 package mum.cs.edu.smartrentalapp.controller;
 import mum.cs.edu.smartrentalapp.domain.Category;
-import mum.cs.edu.smartrentalapp.domain.SearchFilter;
+import mum.cs.edu.smartrentalapp.domain.SearchFIlter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ public class HomePageController {
             method= RequestMethod.GET)
     public String homepage(Model model)
     {
-        model.addAttribute("searchFilter", new SearchFilter());
+        model.addAttribute("searchFilter", new SearchFIlter());
         Category c=new Category();
         List<Category> categoryList=c.getCategories();
         model.addAttribute("category",categoryList);
@@ -27,7 +27,7 @@ public class HomePageController {
     }
 
     @PostMapping(value={"/checkAvailability1"})
-    public ModelAndView routeToController(@ModelAttribute("searchFilter") SearchFilter searchFilter, HttpSession session){
+    public ModelAndView routeToController(@ModelAttribute("searchFilter") SearchFIlter searchFilter, HttpSession session){
 
     if(session.getAttribute("filter")!=null){
         session.removeAttribute("filter");
