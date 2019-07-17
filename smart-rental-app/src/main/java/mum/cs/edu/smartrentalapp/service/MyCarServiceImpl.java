@@ -1,5 +1,6 @@
 package mum.cs.edu.smartrentalapp.service;
 import mum.cs.edu.smartrentalapp.domain.Mycar;
+import mum.cs.edu.smartrentalapp.domain.SearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -17,7 +18,10 @@ public class MyCarServiceImpl implements  MyCarService {
     RestTemplate restTemplate;
 
     private final String carURL="http://localhost:8081/mycar/cars";
+   // private final String filterCars="http://localhost:8081/mycar/filteredcars/{filter}";
     private final String cURL="localhost:8081/mycar/cars/{id}";
+
+
     @Override
     public List<Mycar> getAll() {
         ResponseEntity<List<Mycar>> response =
@@ -26,6 +30,25 @@ public class MyCarServiceImpl implements  MyCarService {
         return response.getBody();
     }
 
+
+    @Override
+    public List<Mycar> filterList(SearchFilter filter){
+        String zip=filter.getZipcode();
+        String min=filter.getMin_price();
+        String max=filter.getMax_price();
+        String filterUrl="http://localhost:8081/mycar/filteredcars/"+zip+"/"+min+"/"+max+"";
+        System.out.println("URI *****************************"+filterUrl);
+        ResponseEntity<List<Mycar>> response =
+                restTemplate.exchange( filterUrl, HttpMethod.GET, null,
+                        new ParameterizedTypeReference<List<Mycar>>() {});
+        return response.getBody();
+    }
+
+    @Override
+    public Mycar getSingleCar(Long id) {
+        String getOneCar="http://localhost:8081/mycar/cars/"+id;
+        return restTemplate.getForObject(getOneCar,Mycar.class,id);
+    }
 
 
 //    public Mycar get(Long id) {
