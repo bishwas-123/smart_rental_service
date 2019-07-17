@@ -22,12 +22,12 @@ public class UserService {
     private final String authUrl = "http://localhost:8080/auth/authenticate";
     private final String userAddUrl = "http://localhost:8080/auth/addUser";
 
-    public List<Apartment> getApartments(){
-        ResponseEntity<List<Apartment>> response = restTemplate.exchange(apartmentListUrl, HttpMethod.GET, null,
-                new ParameterizedTypeReference<List<Apartment>>() {
-                });
-        return response.getBody();
-    }
+//    public List<Apartment> getApartments(){
+//        ResponseEntity<List<Apartment>> response = restTemplate.exchange(apartmentListUrl, HttpMethod.GET, null,
+//                new ParameterizedTypeReference<List<Apartment>>() {
+//                });
+//        return response.getBody();
+//    }
 
     public User authenticate(User user){
         User autheticatedUser = restTemplate.postForObject(authUrl,user,User.class);

@@ -25,6 +25,11 @@ public class LoginController {
         model.addAttribute("user",new User());
         return "views/home/login";
     }
+    @RequestMapping(value = "/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "views/home/index";
+    }
 
     @RequestMapping(value = "/register")
     public String register(Model model){
@@ -32,22 +37,21 @@ public class LoginController {
         return "views/home/register";
     }
 
+
     @PostMapping(value = "/checkLogin")
-    public ModelAndView checkLogin(@ModelAttribute User user, HttpSession session){
+    public String checkLogin(@ModelAttribute User user, HttpSession session){
         System.out.println("user :"+user);
         User u = userService.authenticate(user);
 
         ModelAndView mav = new ModelAndView();
 
         if (u != null){
-            session.setAttribute("current-user",u);
-            mav.addObject("currentUser",u);
-            mav.setViewName("views/home/index");
+            session.setAttribute("user",u);
+            return "redirect:/showCategoryDetail";
         }else {
             mav.addObject("message","login failed");
-            mav.setViewName("views/home/login");
+            return "views/home/login";
         }
-        return mav;
 
     }@PostMapping(value = "/checkRegister")
     public ModelAndView checkRegister(@ModelAttribute("user") User user){
@@ -65,11 +69,5 @@ public class LoginController {
 
     }
 
-    @RequestMapping(value = "/apartments")
-    public String getApartments(Model model){
-        List<Apartment> apartmentList= userService.getApartments();
-        model.addAttribute("apartments",apartmentList);
-        return "index";
 
-    }
 }

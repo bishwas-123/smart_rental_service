@@ -429,14 +429,14 @@
 
         <div class="header-top-content header-three">
             <div class="row">
-                <div class="col-md-7 col-sm-7">
+                <div class="col-md-4 col-sm-7">
                     <div class="site-logo">
-                        <a href="#" class="logo-block">
-                            <img th:src="@{/images/logo-1.png}" alt="House Rent">
+                        <a href="/" class="logo-block">
+                            <img th:src="@{/images/logo-1.png}" alt="Rental Service">
                         </a>
                     </div>
                 </div><!-- /.col-md-8 -->
-                <div class="col-md-5 col-sm-5">
+                <div class="col-md-8 col-sm-5">
                     <div class="left-content">
                         <ul>
                             <li>
@@ -446,14 +446,21 @@
                             </li>
                             <li>
 <!--                                main login-->
-                                <a href="/login"><i class="fa fa-address-book"></i>Login</a>
+                                <a href="/login"><i class="fa fa-sign-in"></i>Login</a>
                             </li>
                             <li>
                                 <a href="/register"><i class="fa fa-address-book"></i>Register</a>
                             </li>
                             <li>
-                                <a href="#" class="main-search"><i class="fa fa-search"></i></a>
+                                <a href="/logout"><i class="fa fa-sign-out"></i>Log Out</a>
                             </li>
+                            <li>
+                                <label th:text="${session.user.firstName}" th:unless="${session.user == null}"></label>
+<!--                                <a href="#"><i class="fa fa-address-book"></i> </a>-->
+                            </li>
+<!--                            <li>-->
+<!--                                <a href="#" class="main-search"><i class="fa fa-search"></i></a>-->
+<!--                            </li>-->
                             <li>
                                 <a href="#" class="trigger-overlay"><i class="fa fa-bars"></i></a>
                             </li>

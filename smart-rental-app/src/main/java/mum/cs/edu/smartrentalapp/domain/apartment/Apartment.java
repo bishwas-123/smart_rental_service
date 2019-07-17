@@ -1,4 +1,4 @@
-package mum.cs.edu.smartrentalapp.apartment;
+package mum.cs.edu.smartrentalapp.domain.apartment;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
