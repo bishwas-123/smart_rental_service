@@ -1,15 +1,12 @@
-package com.mum.edu.domain;
+package mum.cs.edu.smartrentalapp.apartment;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Embeddable;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Embeddable
 public class Address {
     private String country;
     private String state;
