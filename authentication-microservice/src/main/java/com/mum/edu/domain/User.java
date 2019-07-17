@@ -23,7 +23,7 @@ public class User {
     private String firstName;
     private String middleName;
     private String lastName;
-    private String age;
+    private Integer age;
     private String country;
     private String state;
     private String city;
