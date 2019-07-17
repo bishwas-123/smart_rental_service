@@ -8,16 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-import java.io.PrintWriter;
 import java.util.List;
-
-//@SessionAttributes("filter")
 @Controller
 public class HomePageController {
-
-
-
     @RequestMapping(value={"/", "/rental", "smart_rental","smartRental", "smart_rental_service", "home"},
             method= RequestMethod.GET)
     public String homepage(Model model)
@@ -28,8 +21,17 @@ public class HomePageController {
         model.addAttribute("category",categoryList);
         return "views/home/index";
     }
+    @GetMapping("/api/{serviceurl}")
+    public void routing(@PathVariable String serviceurl ){
+        RoutingClass.routingServices("/api/"+serviceurl);
+    }
+
     @PostMapping(value={"/checkAvailability1"})
     public ModelAndView routeToController(@ModelAttribute("searchFilter") SearchFilter searchFilter, HttpSession session){
+
+    if(session.getAttribute("filter")!=null){
+        session.removeAttribute("filter");
+    }
         if(searchFilter.getCategory().equals("1")){
             session.setAttribute("filter",searchFilter);
           return new ModelAndView("redirect:/available/cars/");
@@ -40,4 +42,5 @@ public class HomePageController {
             return new ModelAndView("redirect:/available/hotels/");
         }
     }
+
 }

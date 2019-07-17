@@ -11,6 +11,6 @@ public class HotelController {
     public String carsList(Model model){
 //        List<Mycar> cars = carService.getAll();
 //        model.addAttribute("cars",cars);
-        return "views/cars/carList";
+        return "test";
     }
 }

@@ -44,6 +44,11 @@ public class MyCarServiceImpl implements  MyCarService {
         return response.getBody();
     }
 
+    @Override
+    public Mycar getSingleCar(Long id) {
+        String getOneCar="http://localhost:8081/mycar/cars/"+id;
+        return restTemplate.getForObject(getOneCar,Mycar.class,id);
+    }
 
 
 //    public Mycar get(Long id) {

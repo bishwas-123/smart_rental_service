@@ -1,4 +1,4 @@
-package mum.cs.edu.smartrentalapp.domain;
+package mum.edu.mycar.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,13 +9,13 @@ import lombok.Setter;
 public class SearchFilter {
     private String zipcode;
     private String category;
-    private String min_price;
-    private String max_price;
+    private double min_price;
+    private double max_price;
 
-    public SearchFilter(String zipcode, String category, String min_price, String max_price) {
+    public SearchFilter(String zipcode, String category, double min_price, double max_price) {
         this.zipcode = zipcode;
         this.category = category;
-       this.min_price=min_price;
-       this.max_price=max_price;
+        this.min_price=min_price;
+        this.max_price=max_price;
     }
 }
