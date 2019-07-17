@@ -1,6 +1,6 @@
 package mum.cs.edu.smartrentalapp.controller;
 
-import mum.cs.edu.smartrentalapp.apartment.Apartment;
+import mum.cs.edu.smartrentalapp.domain.apartment.Apartment;
 import mum.cs.edu.smartrentalapp.service.ApartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

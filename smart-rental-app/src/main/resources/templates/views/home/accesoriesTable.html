@@ -151,24 +151,26 @@
 </head>
 <body>
 <th:block layout:fragment="content">
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-            // Animate select box length
-            var searchInput = $(".search-box input");
-            var inputGroup = $(".search-box .input-group");
-            var boxWidth = inputGroup.width();
-            searchInput.focus(function(){
-                inputGroup.animate({
-                    width: "300"
-                });
-            }).blur(function(){
-                inputGroup.animate({
-                    width: boxWidth
-                });
-            });
-        });
-    </script>
+<!--    <script type="text/javascript">-->
+<!--        $(document).ready(function () {-->
+<!--            $('.edit').click(function () {-->
+<!--                var currentTD = $(this).parents('tr').find('td');-->
+<!--                if ($(this).html() == 'Edit') {-->
+<!--                    $.each(currentTD, function () {-->
+<!--                        $(this).prop('contenteditable', true)-->
+<!--                    });-->
+<!--                } else {-->
+<!--                    $.each(currentTD, function () {-->
+<!--                        $(this).prop('contenteditable', false)-->
+<!--                    });-->
+<!--                }-->
+
+<!--                $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')-->
+
+<!--            });-->
+
+<!--        });-->
+<!--    </script>-->
 <div class="container">
     <div class="form-row ">
         <div class="form-group col-md-3">
@@ -203,8 +205,8 @@
                 <!--            th:object="${category_id}"-->
                 <div class="row">
                     <div class="col-sm-4">
-                        <form th:action="@{/addCategory}" >
-                            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                        <form th:action="@{/addApartment}" >
+                            <button type="submit"> Add New</button>
                         </form>
                     </div>
                     <!--                <div class="col-sm-4">-->
@@ -248,7 +250,6 @@
                 </thead>
                 <tbody>
                 <tr th:each="apartment: ${apartments}">
-                <tr th:each="apartment: ${apartments}">
                     <!--                <td th:text="${apartment.id}"></td>-->
                     <td th:text="${apartment.name}"></td>
                     <td th:text="${apartment.description}"></td>
@@ -257,10 +258,9 @@
                     <td th:text="${apartment.city}"></td>
                     <td th:text="${apartment.contact}"></td>
                     <td>
-                        <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                        <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                    </td>
+<!--                        <a th:href="@{/}" class="view1" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>-->
+                    <td><a th:href="@{/edit/{id1}(id1=${apartment.id})}">Edit</a></td>
+                    <td><a th:href="@{/delete/{id1}(id1=${apartment.id})}">Delete</a></td> </td>
                 </tr>
                 </tbody>
             </table>

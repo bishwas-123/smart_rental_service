@@ -1,15 +1,9 @@
 package mum.cs.edu.smartrentalapp.service;
 
-import mum.cs.edu.smartrentalapp.apartment.Apartment;
 import mum.cs.edu.smartrentalapp.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 @Component
 public class UserService {

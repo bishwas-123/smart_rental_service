@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Apartment {
+    private Long id;
+    private String category;
     private String name;
     private double rentPerMonth;
     private String description;

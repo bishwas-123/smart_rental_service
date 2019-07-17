@@ -1,6 +1,5 @@
 package mum.cs.edu.smartrentalapp.controller;
 
-import mum.cs.edu.smartrentalapp.apartment.Apartment;
 import mum.cs.edu.smartrentalapp.domain.user.User;
 import mum.cs.edu.smartrentalapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 public class LoginController {

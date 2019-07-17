@@ -13,14 +13,14 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-//    private Long id;
+    private Long id;
     private String username;
     private String password;
     private String role;
     private String firstName;
     private String middleName;
     private String lastName;
-    private String age;
+    private Integer age;
     private String country;
     private String state;
     private String city;
