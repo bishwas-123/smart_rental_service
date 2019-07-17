@@ -23,9 +23,18 @@ public class User {
     private String firstName;
     private String middleName;
     private String lastName;
-    private int age;
-    @Embedded
-    private Address address;
-    @Embedded
-    private Contact contact;
+    private String age;
+    private String country;
+    private String state;
+    private String city;
+    private String street;
+    private String zip;
+    private String contact;
+    private String email;
+    private String phone;
+    private String mailBox;
+//    @Embedded
+//    private Address address;
+//    @Embedded
+//    private Contact contact;
 }
