@@ -9,10 +9,10 @@
 </head>
 <body>
 <th:block layout:fragment="content">
-<form action="#" th:action="@{/add-apartment}" th:object="${apartment}" method="post">
+<form action="#" th:action="@{/addNew/{type}(type ='APARTMENT')}" th:object="${apartment}" method="post">
     <div >
         <select th:field="${apartment.category}" class="dropdown" >
-            <option th:value="'CAR'" th:text="Car"></option>
+            <option th:value="'CAR'" th:text="Car" th:default="'CAR'"></option>
             <option th:value="'APARTMENT'" th:text="Apartment"></option>
             <option th:value="'HOTEL'" th:text="Hotel"></option>
         </select>
@@ -21,11 +21,15 @@
     <input type="text" th:field="*{name}" id="name" placeholder="Name">
     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
     <label for="vendorId">Vendor ID</label>
-    <input type="number" id="vendorId" th:value="${session.user.id}" th:unless="${session.user == null}">
+    <input type="number" id="vendorId" th:name="vendorId" th:value="${session.user.id}" th:unless="${session.user == null}">
     <span th:if="${#fields.hasErrors('vendorId')}" th:errors="*{vendorId}"></span>
     <label for="rentPerMonth">Rent Per Month</label>
     <input type="number" th:field="*{rentPerMonth}" id="rentPerMonth" placeholder="rentPerMonth">
     <span th:if="${#fields.hasErrors('rentPerMonth')}" th:errors="*{rentPerMonth}"></span>
+
+    <label for="room_num">Room Number</label>
+    <input type="number" th:field="*{room_num}" id="room_num" placeholder="room_num">
+    <span th:if="${#fields.hasErrors('room_num')}" th:errors="*{room_num}"></span>
     <label for="description">Description</label>
     <input type="text" th:field="*{description}" id="description" placeholder="description">
     <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
@@ -51,6 +55,10 @@
     <label for="contact">Contact</label>
     <input type="text" th:field="*{contact}" id="contact" placeholder="contact">
     <span th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}"></span>
+
+    <label for="image_url">Image url</label>
+    <input type="text" th:field="*{image_url}" id="image_url" placeholder="image_url">
+    <span th:if="${#fields.hasErrors('image_url')}" th:errors="*{image_url}"></span>
     <input type="submit" value="Add apartment">
 </form>
 </th:block>

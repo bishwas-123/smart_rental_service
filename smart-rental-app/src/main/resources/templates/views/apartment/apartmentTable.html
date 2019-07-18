@@ -151,26 +151,6 @@
 </head>
 <body>
 <th:block layout:fragment="content">
-<!--    <script type="text/javascript">-->
-<!--        $(document).ready(function () {-->
-<!--            $('.edit').click(function () {-->
-<!--                var currentTD = $(this).parents('tr').find('td');-->
-<!--                if ($(this).html() == 'Edit') {-->
-<!--                    $.each(currentTD, function () {-->
-<!--                        $(this).prop('contenteditable', true)-->
-<!--                    });-->
-<!--                } else {-->
-<!--                    $.each(currentTD, function () {-->
-<!--                        $(this).prop('contenteditable', false)-->
-<!--                    });-->
-<!--                }-->
-
-<!--                $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')-->
-
-<!--            });-->
-
-<!--        });-->
-<!--    </script>-->
 <div class="container">
     <div class="form-row ">
         <div class="form-group col-md-3">
@@ -179,18 +159,18 @@
                     <thead><tr><th>Select Categories</th></tr></thead>
                     <tbody>
                     <tr>
-                        <form th:action="@{/showDetail/1}">
-                            <td><button type="submit"/>Car</button></td>
-                        </form>
-                    <tr>
-                        <tr>
-                        <form th:action="@{/showDetail/2}">
-                            <td><button type="submit"/>Apartment</button></td>
+                        <form th:action="@{/showDetail/{type}/{vid}(type ='APARTMENT',vid = ${session.user.id})}">
+                            <td><button class="button" type="submit"/>Apartment</button></td>
                         </form>
                     </tr>
                     <tr>
-                        <form th:action="@{/showDetail/3}">
-                            <td><button type="submit"/>Apartment</button></td>
+                        <form th:action="@{/showDetail/{type}/{vid}(type ='CAR',vid = ${session.user.id})}">
+                            <td><button  class="button" type="submit"/>Car</button></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <form th:action="@{/showDetail/{type}/{vid}(type ='HOTEL',vid = ${session.user.id})}">
+                            <td><button class="button" type="submit"/>Hotel</button></td>
                         </form>
                     </tr>
                     </tbody>
@@ -204,27 +184,21 @@
             <div class="table-title">
                 <!--            th:object="${category_id}"-->
                 <div class="row">
-                    <div class="col-sm-4">
-                        <form th:action="@{/addApartment}" >
-                            <button type="submit"> Add New</button>
+                    <div class="col-sm-6">
+                        <form class="form-group col-md-3" th:action="@{/add/{type}(type ='APARTMENT')}" >
+                            <button type="submit"><i class="ui-icon-plus"></i> Apartment </button>
+                        </form>
+                        <form class="form-group col-md-2" th:action="@{/add/{type}(type ='HOTEL')}" >
+                            <button type="submit" ><i class="ui-icon-plus "></i> Hotel </button>
+                        </form>
+                            <form class="form-group col-md-2" th:action="@{/add/{type}(type ='CAR')}" >
+                            <button type="submit" ><i class="ui-icon-plus "></i> Car </button>
                         </form>
                     </div>
-                    <!--                <div class="col-sm-4">-->
-                    <!--                    <div class="show-entries">-->
-                    <!--                        <span>Show</span>-->
-                    <!--                        <select>-->
-                    <!--                            <option>5</option>-->
-                    <!--                            <option>10</option>-->
-                    <!--                            <option>15</option>-->
-                    <!--                            <option>20</option>-->
-                    <!--                        </select>-->
-                    <!--                        <span>entries</span>-->
-                    <!--                    </div>-->
-                    <!--                </div>-->
                     <div class="col-sm-4">
-                        <h2 class="text-center">Accessories <b>Details</b></h2>
+                        <h3 class="text-left">Accessories <b>Details</b></h3>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                         <div class="search-box">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
@@ -239,28 +213,31 @@
                 <tr>
                     <!--                <th>ID</th>-->
                     <!--                <th>Category <i class="fa fa-sort"></i></th>-->
-                    <th>Category Name</th>
+                    <th>Category Type</th>
+                    <th>Name</th>
                     <th>Description</th>
                     <th>Rent rate(day/month)</th>
                     <th>State </th>
                     <th>City </th>
                     <th>Street</th>
                     <th>Contact</th>
+                    <th>Vendor ID</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="apartment: ${apartments}">
-                    <!--                <td th:text="${apartment.id}"></td>-->
+                    <td th:text="${apartment.category}"></td>
                     <td th:text="${apartment.name}"></td>
                     <td th:text="${apartment.description}"></td>
                     <td th:text="${apartment.rentPerMonth}"></td>
                     <td th:text="${apartment.state}"></td>
                     <td th:text="${apartment.city}"></td>
                     <td th:text="${apartment.contact}"></td>
+                    <td th:text="${apartment.vendorId}"></td>
                     <td>
 <!--                        <a th:href="@{/}" class="view1" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>-->
-                    <td><a th:href="@{/edit/{id1}(id1=${apartment.id})}">Edit</a></td>
-                    <td><a th:href="@{/delete/{id1}(id1=${apartment.id})}">Delete</a></td> </td>
+                    <td><a th:href="@{/edit/{type}/{id}(type =${apartment.category},id=${apartment.id})}">Edit</a></td>
+                    <td><a th:href="@{/delete/{type}/{id}(type =${apartment.category},id=${apartment.id})}">Delete</a></td>
                 </tr>
                 </tbody>
             </table>
