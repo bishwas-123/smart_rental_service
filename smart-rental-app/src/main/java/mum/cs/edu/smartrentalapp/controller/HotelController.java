@@ -1,7 +1,7 @@
 package mum.cs.edu.smartrentalapp.controller;
 
 import mum.cs.edu.smartrentalapp.domain.Hotel;
-import mum.cs.edu.smartrentalapp.domain.SearchFilter;
+import mum.cs.edu.smartrentalapp.domain.SearchFIlter;
 import mum.cs.edu.smartrentalapp.domain.rent.Rent;
 import mum.cs.edu.smartrentalapp.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class HotelController {
     @GetMapping("available/hotels/")
     public String hotelList(Model model, HttpSession session){
         if(session.getAttribute("filter")!=null){
-            SearchFilter filter = (SearchFilter) session.getAttribute("filter");
+            SearchFIlter filter = (SearchFIlter) session.getAttribute("filter");
             List<Hotel> hotels = service.filterList(filter);
             System.out.println(hotels);
             if (hotels.isEmpty()) {
