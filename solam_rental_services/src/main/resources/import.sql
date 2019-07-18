@@ -1,0 +1,1 @@
+insert into hotel (city,state,street,zip_code,contact,email,name,website,image_url,vendor_id,description,price) values ('fairfield','Iowa','1000N street','52557','7988989','abc@gmail','hote-fairfield','www.hotel.com','abc',1,'description',1200);
