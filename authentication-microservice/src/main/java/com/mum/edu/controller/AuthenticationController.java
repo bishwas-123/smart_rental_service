@@ -9,6 +9,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
 
 @RestController
+@RequestMapping("/auth")
 public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
@@ -24,12 +25,12 @@ public class AuthenticationController {
         return user;
     }
 
-    @GetMapping(value = "/authenticate", produces = "application/json")
-    public User authenticate(User u){
+    @PostMapping(value = "/authenticate")
+    public User authenticate(@RequestBody User u){
         return authenticationService.authenticate(u.getUsername(),u.getPassword());
     }
 
-    @PostMapping(value = "/users", consumes = "application/json")
+    @PostMapping(value = "/addUser")
     public RedirectView add(@RequestBody User user) {
         authenticationService.add(user);
         return new RedirectView("/users/" + user.getId());

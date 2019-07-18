@@ -14,31 +14,31 @@ public class AuthenticationService {
     private UserRepository userRepository;
 
     public User authenticate(String uname, String pword){
-        return userRepository.findByUsernameAndPassword(uname,pword);
+        return userRepository.findDistinctByUsernameAndPassword(uname,pword);
     }
 
-    @Autowired
-    private UserRepository apartmentDao;
+//    @Autowired
+//    private UserRepository userRepository;
 
 
     public List<User> getAll() {
-        return apartmentDao.findAll();
+        return userRepository.findAll();
     }
 
-    public void add(User book) {
-        apartmentDao.save(book);
+    public void add(User user) {
+        userRepository.save(user);
     }
 
     public User get(Long id) {
-        return apartmentDao.findById(id).get();
+        return userRepository.findById(id).get();
     }
 
-    public void update(User book) {
-        apartmentDao.save(book);
+    public void update(User user) {
+        userRepository.save(user);
     }
 
     public void delete(Long id) {
-        apartmentDao.deleteById(id);
+        userRepository.deleteById(id);
     }
 
 }

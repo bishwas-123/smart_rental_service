@@ -9,10 +9,10 @@ import lombok.Setter;
 public class SearchFIlter {
     private String zipcode;
     private String category;
-    private double min_price;
-    private double max_price;
+    private String min_price;
+    private String max_price;
 
-    public SearchFIlter(String zipcode, String category, double min_price, double max_price) {
+    public SearchFIlter(String zipcode, String category, String min_price, String max_price) {
         this.zipcode = zipcode;
         this.category = category;
        this.min_price=min_price;

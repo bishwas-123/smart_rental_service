@@ -1,84 +1,72 @@
 package mum.cs.edu.smartrentalapp.domain;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Mycar {
-
     private Long id;
+    private Long vendorId;
+    private String category;
     private String name;
     private String model;
     private String make;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate year;
+    private double price_per_day;
     private Long registrationNumber;
-
-    Mycar(){
-        super();
-
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public void setYear(LocalDate year) {
-        this.year = year;
-    }
-
-    public void setRegistrationNumber(Long registrationNumber) {
-        this.registrationNumber = registrationNumber;
-    }
-
-    public void setLastServiceDate(LocalDate lastServiceDate) {
-        this.lastServiceDate = lastServiceDate;
-    }
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
 
     private LocalDate lastServiceDate;
+    private String image_url;
+    private Address address;
 
-    public Long getId() {
-        return id;
+    private double service_charge;
+    private double security_deposit;
+    private String rent_policy;
+    private String gear;
+    private int seat;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate available_from;
+    private String description;
+    private String contact;
+
+
+    public String getState() {
+        return this.address.getState();
     }
 
-    public String getName() {
-        return name;
+    public void setState(String state) {
+        this.address.setState(state);
     }
 
-    public String getModel() {
-        return model;
+    public String getCity() {
+        return this.address.getCity();
     }
 
-    public String getMake() {
-        return make;
+    public void setCity(String city) {
+        this.address.setCity(city);
     }
 
-    public LocalDate getYear() {
-        return year;
+    public String getStreet() {
+        return this.address.getStreet();
     }
 
-    public Long getRegistrationNumber() {
-        return registrationNumber;
+    public void setStreet(String street) {
+        this.address.setStreet(street);
     }
 
-    public LocalDate getLastServiceDate() {
-        return lastServiceDate;
+    public String getZip() {
+        return this.address.getZip();
     }
 
-    public Mycar(String name, String model, String make, LocalDate year, Long registrationNumber, LocalDate lastServiceDate) {
-        this.name = name;
-        this.model = model;
-        this.make = make;
-        this.year = year;
-        this.registrationNumber = registrationNumber;
-        this.lastServiceDate = lastServiceDate;
+    public void setZip(String zip) {
+        this.address.setZip(zip);
     }
+
+
 }

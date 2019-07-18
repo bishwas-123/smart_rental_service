@@ -21,34 +21,35 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <form role="search" method="post" class="advance_search_query" action="cars/add/">
+                                            <form role="search" method="post" class="advance_search_query" th:action="@{/checkAvailability1}" th:object="${searchFilter}">
                                                 <div class="form-bg border-radius">
                                                     <div class="form-content">
                                                         <div class="form-group living-area">
                                                             <label>Zip Code</label>
-                                                            <input class="tags search-field" type="text" value="" name="zipcode" placeholder="Where do you want to Search?">
+                                                            <input class="tags search-field" type="text" th:value="${searchFilter.zipcode}" name="zipcode" placeholder="Where do you want to Search?">
                                                             <input type="hidden" name="post_type" value="rental" />
                                                         </div><!-- /.form-group -->
 
 
 
-                                                        <div class="form-group category-type">
+
+                                                        <div class="form-group category-type" th:object="${category}">
                                                             <label>Category</label>
-                                                            <select name="category">
-                                                                <option value="apartments">Car</option>
-                                                                <option value="apartments">Apartments</option>
-                                                                <option value="factory">Hotel</option>
+                                                            <select name="category" id="category">
+                                                                <option th:each="cat: ${category}" th:value="${cat.id}" th:text="${cat.name}"></option>
+<!--                                                                <option value="apartments">Apartments</option>-->
+<!--                                                                <option value="factory">Hotel</option>-->
 
                                                             </select>
                                                         </div><!-- /.form-group -->
 
                                                         <div class="form-group min-price">
                                                             <label>Price Range</label>
-                                                            <input type="text" value="" name="min_price" placeholder="Ex - 200">
+                                                            <input type="text" th:value="${searchFilter.min_price}" name="min_price" placeholder="Ex - 200">
                                                         </div><!-- /.form-group -->
                                                         <div class="form-group max-price">
                                                             <label class="invisible">Price Range</label>
-                                                            <input type="text" value="" name="max_price" placeholder="Ex - 5000">
+                                                            <input type="text" th:value="${searchFilter.max_price}" name="max_price" placeholder="Ex - 5000">
                                                         </div><!-- /.form-group -->
 
                                                         <div class="form-group">
@@ -270,10 +271,7 @@
 
     </footer>
 
-
-
-
-
+    </footer>
 </th:block>
 
 

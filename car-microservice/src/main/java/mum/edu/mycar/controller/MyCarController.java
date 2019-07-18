@@ -1,10 +1,11 @@
 package mum.edu.mycar.controller;
 
 import mum.edu.mycar.domain.Mycar;
+import mum.edu.mycar.domain.SearchFilter;
 import mum.edu.mycar.service.MyCarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -17,6 +18,19 @@ public class MyCarController {
     @GetMapping("/cars")
     public List<Mycar> getAll() {
         return carService.getAll();
+    }
+
+    @GetMapping("filteredcars/{zip}/{min}/{max}")
+    public List<Mycar> getAllFilteredCar(Model model, @PathVariable String zip,@PathVariable String min,@PathVariable String max){
+      Double min1=new Double(min);
+      Double max1=new Double(max);
+        return carService.getAllFilteredCar(zip,min1,max1);
+    }
+
+    @GetMapping("/cars/all/{vendorId}")
+    public List<Mycar> getAllByVendorId(@PathVariable("vendorId") Long id) {
+        System.out.println("vendor id :"+ id);
+        return carService.findAllByVendorId(id);
     }
 
     @GetMapping("/cars/{id}")
