@@ -1,0 +1,1 @@
+insert into return_domain(check_out,rent_id,customer_id,payment_id,description) values ('2019-07-17',112,3123,5443,'First Returned');
