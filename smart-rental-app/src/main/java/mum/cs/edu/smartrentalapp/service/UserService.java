@@ -11,8 +11,8 @@ public class UserService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String apartmentUrl = "http://localhost:8082/api/apartment/{id}";
-    private final String apartmentListUrl = "http://localhost:8082/api/apartments";
+    private final String apartmentUrl = "http://localhost:8081/api/apartment/{id}";
+    private final String apartmentListUrl = "http://localhost:8081/api/apartments";
     private final String authUrl = "http://localhost:8080/auth/authenticate";
     private final String userAddUrl = "http://localhost:8080/auth/addUser";
 

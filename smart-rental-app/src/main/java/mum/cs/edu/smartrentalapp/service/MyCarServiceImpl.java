@@ -18,9 +18,9 @@ public class MyCarServiceImpl implements  MyCarService {
     @Autowired
     RestTemplate restTemplate;
 
-    private final String carURL="http://localhost:8081/mycar/cars";
-   // private final String filterCars="http://localhost:8081/mycar/filteredcars/{filter}";
-    private final String cURL="localhost:8081/mycar/cars/{id}";
+    private final String carURL="http://localhost:8083/mycar/cars";
+   // private final String filterCars="http://localhost:8083/mycar/filteredcars/{filter}";
+    private final String cURL="localhost:8083/mycar/cars/{id}";
 
 
     @Override
@@ -37,7 +37,7 @@ public class MyCarServiceImpl implements  MyCarService {
         String zip=filter.getZipcode();
         String min=filter.getMin_price();
         String max=filter.getMax_price();
-        String filterUrl="http://localhost:8081/mycar/filteredcars/"+zip+"/"+min+"/"+max+"";
+        String filterUrl="http://localhost:8083/mycar/filteredcars/"+zip+"/"+min+"/"+max+"";
         System.out.println("URI *****************************"+filterUrl);
         ResponseEntity<List<Mycar>> response =
                 restTemplate.exchange( filterUrl, HttpMethod.GET, null,
@@ -47,7 +47,7 @@ public class MyCarServiceImpl implements  MyCarService {
 
     @Override
     public Mycar getSingleCar(Long id) {
-        String getOneCar="http://localhost:8081/mycar/cars/"+id;
+        String getOneCar="http://localhost:8083/mycar/cars/"+id;
         return restTemplate.getForObject(getOneCar,Mycar.class,id);
     }
 
