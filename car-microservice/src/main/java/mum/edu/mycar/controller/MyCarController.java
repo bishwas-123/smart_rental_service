@@ -27,6 +27,12 @@ public class MyCarController {
         return carService.getAllFilteredCar(zip,min1,max1);
     }
 
+    @GetMapping("/cars/all/{vendorId}")
+    public List<Mycar> getAllByVendorId(@PathVariable("vendorId") Long id) {
+        System.out.println("vendor id :"+ id);
+        return carService.findAllByVendorId(id);
+    }
+
     @GetMapping("/cars/{id}")
     public Mycar get(@PathVariable Long id) {
         Mycar mc =  carService.get(id);

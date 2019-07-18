@@ -18,6 +18,10 @@ public class MyCarServiceImpl implements  MyCarService {
     public List<Mycar> getAllFilteredCar(String zip,double min,double max) {
         return carRepository.getAllFilteredCar(zip,min,max);
     }
+    @Override
+    public List<Mycar> findAllByVendorId(Long id){
+        return carRepository.findAllByVendorId(id);
+    }
 
     @Override
     public void save(Mycar car) {
@@ -37,7 +41,6 @@ public class MyCarServiceImpl implements  MyCarService {
 
     @Override
     public Mycar get(Long id) {
-
         return  carRepository.findById(id).get();
     }
 }

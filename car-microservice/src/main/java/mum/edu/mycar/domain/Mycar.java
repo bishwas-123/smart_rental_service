@@ -3,6 +3,7 @@ package mum.edu.mycar.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -18,11 +19,13 @@ public class Mycar {
     private String name;
     private String model;
     private String make;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate year;
     private double price_per_day;
     @Column(name="registration_number")
     private Long registrationNumber;
     @Column(name="last_service_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate lastServiceDate;
     private String image_url;
     @Embedded
@@ -33,10 +36,15 @@ public class Mycar {
     private String rent_policy;
     private String gear;
     private int seat;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate available_from;
     private String description;
+    private Long vendorId;
+    private String category;
+    private String contact;
 
-    public Mycar(String name, String model, String make, LocalDate year, double price_per_day, Long registrationNumber, LocalDate lastServiceDate, String image_url, double service_charge, double security_deposit, String rent_policy, String gear, int seat, LocalDate available_from,String description) {
+
+    public Mycar(String name, String model, String make, LocalDate year, double price_per_day, Long registrationNumber, LocalDate lastServiceDate, String image_url, double service_charge, double security_deposit, String rent_policy, String gear, int seat, LocalDate available_from,String description,Long vendorId, String category, String contact) {
         this.name = name;
         this.model = model;
         this.make = make;
@@ -52,6 +60,9 @@ public class Mycar {
         this.seat = seat;
         this.available_from = available_from;
         this.description=description;
+        this.contact = contact;
+        this.vendorId = vendorId;
+        this.category = category;
     }
 
 }

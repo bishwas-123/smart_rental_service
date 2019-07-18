@@ -12,5 +12,6 @@ public interface MyCarService {
     void delete(Long id);
     void update(Mycar car);
     Mycar get(Long id);
+    List<Mycar> findAllByVendorId(Long vid);
 
 }
