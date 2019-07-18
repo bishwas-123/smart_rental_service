@@ -46,7 +46,13 @@ public class LoginController {
 
         if (u != null){
             session.setAttribute("user",u);
-            return session.getAttribute("url_prior_login") ==null ? "redirect:"+session.getAttribute("url_prior_login") : (u.getRole().equalsIgnoreCase("VENDOR")? )"redirect:/showCategoryDetail" :"redirect:/";
+            Object sessionutl =session.getAttribute("url_prior_login");
+            if (sessionutl != null){
+                return "redirect:"+sessionutl;
+            }else {
+
+            }
+            return  (u.getRole().equalsIgnoreCase("VENDOR")? "redirect:/showCategoryDetail" :"redirect:/");
         }else {
             mav.addObject("message","login failed");
             return "views/home/login";
