@@ -35,7 +35,7 @@ public class CarController {
     }
     @GetMapping("/viewCar/{id}")
     public String singleIntemDisplay(Model model, @PathVariable Long id){
-         Mycar car=carService.getSingleCar(id);
+         Mycar car=carService.get(id);
          model.addAttribute("singleCar",car);
         return "views/cars/singleCar";
 

@@ -2,8 +2,13 @@ package mum.cs.edu.smartrentalapp.service;
 
 import mum.cs.edu.smartrentalapp.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @Component
 public class UserService {
@@ -11,17 +16,16 @@ public class UserService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String apartmentUrl = "http://localhost:8081/api/apartment/{id}";
-    private final String apartmentListUrl = "http://localhost:8081/api/apartments";
     private final String authUrl = "http://localhost:8080/auth/authenticate";
     private final String userAddUrl = "http://localhost:8080/auth/addUser";
+    private final String usersUrl = "http://localhost:8080/auth/users";
 
-//    public List<Apartment> getApartments(){
-//        ResponseEntity<List<Apartment>> response = restTemplate.exchange(apartmentListUrl, HttpMethod.GET, null,
-//                new ParameterizedTypeReference<List<Apartment>>() {
-//                });
-//        return response.getBody();
-//    }
+    public List<User> getUsers(){
+        ResponseEntity<List<User>> response = restTemplate.exchange(usersUrl, HttpMethod.GET, null,
+                new ParameterizedTypeReference<List<User>>() {
+                });
+        return response.getBody();
+    }
 
     public User authenticate(User user){
         User autheticatedUser = restTemplate.postForObject(authUrl,user,User.class);
@@ -33,7 +37,7 @@ public class UserService {
 
     }
 
-    public void registerUser(User user){
-        restTemplate.postForObject(authUrl,user,User.class);
-    }
+//    public void registerUser(User user){
+//        restTemplate.postForObject(authUrl,user,User.class);
+//    }
 }

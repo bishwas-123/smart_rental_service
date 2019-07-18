@@ -14,6 +14,8 @@ public class Apartment {
     private double rentPerMonth;
     private String description;
     private Long vendorId;
+    private String image_url;
+    private String room_num;
     //apartment adress
     private String country;
     private String state;

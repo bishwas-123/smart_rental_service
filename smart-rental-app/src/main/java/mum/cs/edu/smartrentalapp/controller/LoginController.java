@@ -2,6 +2,7 @@ package mum.cs.edu.smartrentalapp.controller;
 
 import mum.cs.edu.smartrentalapp.domain.user.User;
 import mum.cs.edu.smartrentalapp.service.UserService;
+import mum.cs.edu.smartrentalapp.utils.CategoryConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,8 +45,9 @@ public class LoginController {
         ModelAndView mav = new ModelAndView();
 
         if (u != null){
+            System.out.println(u +" auntheticated !!!!!!!");
             session.setAttribute("user",u);
-            return "redirect:/showCategoryDetail";
+            return u.getRole().equalsIgnoreCase("VENDOR")? "redirect:/showCategoryDetail" :"redirect:/";
         }else {
             mav.addObject("message","login failed");
             return "views/home/login";

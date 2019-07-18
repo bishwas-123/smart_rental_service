@@ -10,9 +10,10 @@ public interface MyCarService {
     List<Mycar> getAll();
 
     List<Mycar> filterList(SearchFIlter filter);
-    Mycar getSingleCar(Long id);
-//    void save(Mycar car);
-//    void delete(Long id);
+//    Mycar getSingleCar(Long id);
+    void save(Mycar car);
+    void delete(Long id);
 //    void update(Mycar car);
-//    Mycar get(Long id);
+    Mycar get(Long id);
+    List<Mycar> getCarsByVendorId(Long vid);
 }

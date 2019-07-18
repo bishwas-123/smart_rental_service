@@ -37,6 +37,7 @@ public class HomePageController {
           return new ModelAndView("redirect:/available/cars/");
         }
         else if(searchFilter.getCategory().equals("2")){
+            session.setAttribute("filter",searchFilter);
             return new ModelAndView("redirect:/available/apartment/");
         }else{
             return new ModelAndView("redirect:/available/hotels/");
