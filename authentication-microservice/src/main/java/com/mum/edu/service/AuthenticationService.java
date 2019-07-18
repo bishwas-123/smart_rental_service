@@ -14,7 +14,7 @@ public class AuthenticationService {
     private UserRepository userRepository;
 
     public User authenticate(String uname, String pword){
-        return userRepository.findByUsernameAndPassword(uname,pword);
+        return userRepository.findDistinctByUsernameAndPassword(uname,pword);
     }
 
 //    @Autowired

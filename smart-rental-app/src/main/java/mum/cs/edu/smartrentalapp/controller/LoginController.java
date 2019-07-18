@@ -45,6 +45,7 @@ public class LoginController {
 
         if (u != null){
             session.setAttribute("user",u);
+
             return "redirect:/showCategoryDetail";
         }else {
             mav.addObject("message","login failed");
@@ -52,18 +53,20 @@ public class LoginController {
         }
 
     }@PostMapping(value = "/checkRegister")
-    public ModelAndView checkRegister(@ModelAttribute("user") User user){
+    public String checkRegister(@ModelAttribute("user") User user){
 //        User u = userService.authenticate(user);
         ModelAndView mav = new ModelAndView();
         if (user != null ){
             userService.add(user);
-            mav.setViewName("views/home/index");
+            return "views/home/login";
+           // mav.setViewName("views/home/index");
 
         }else {
             mav.addObject("message","registration failed");
-            mav.setViewName("views/home/register");
+           // mav.setViewName("views/home/register");
+            return "views/home/register";
         }
-        return mav;
+       // return mav;
 
     }
 

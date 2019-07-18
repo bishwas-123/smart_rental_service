@@ -102,32 +102,34 @@
 
                         <div class="widget_rental_search clerafix">
                             <div class="form-border gradient-border">
-                                <form action="http://demo.softhopper.net/house-rent/confirm-booking" method="post" class="advance_search_query booking-form">
+                                <form th:action="@{/rentItem}" method="post" class="advance_search_query booking-form" th:object="${rent}">
                                     <div class="form-bg seven">
                                         <div class="form-content">
                                             <h2 class="form-title">Rent This Car</h2>
-                                            <input type="hidden" name="post_id" value="157" />
-                                            <div class="form-group">
-                                                <label>Full Name</label>
-                                                <input type="text" name="full_name" placeholder="Full name">
-                                            </div><!-- /.form-group -->
-                                            <div class="form-group">
-                                                <label>Phone Number</label>
-                                                <input type="tel" name="phone_number" placeholder="+99(99)9999-9999">
-                                            </div><!-- /.form-group -->
-                                            <div class="form-group">
-                                                <label>Email Address</label>
-                                                <input type="email" name="email" placeholder="example@domain.com">
-                                            </div><!-- /.form-group -->
+                                            <input type="hidden" name="accessoriesId" th:value="1" />
+                                            <input   type="hidden" name="price" th:value="${singleCar.price_per_day}"/>
+                                            <input type="hidden" name="customerId" th:value="${session.user.id}" th:unless="${session.user==null}"/>
+<!--                                            <div class="form-group">-->
+<!--                                                <label>Full Name</label>-->
+<!--                                                <input type="text" name="full_name" placeholder="Full name">-->
+<!--                                            </div>-->
+<!--                                            <div class="form-group">-->
+<!--                                                <label>Phone Number</label>-->
+<!--                                                <input type="tel" name="phone_number" placeholder="+99(99)9999-9999">-->
+<!--                                            </div>-->
+<!--                                            <div class="form-group">-->
+<!--                                                <label>Email Address</label>-->
+<!--                                                <input type="email" name="email" placeholder="example@domain.com">-->
+<!--                                            </div>-->
 
                                             <div class="form-group min-price">
                                                 <label>Rent From</label>
-                                                <input class="datepicker check-in" type="date" name="rental_date_from">
+                                                <input id="rental_date_from"  class="datepicker check-in" type="date" name="rentFrom">
                                             </div><!-- /.form-group -->
 
                                             <div class="form-group max-price">
                                                 <label>Rent To</label>
-                                                <input class="datepicker check-out" type="date" name="rental_date_to">
+                                                <input id="rental_date_to" class="datepicker check-out" type="date" name="rentTo">
                                             </div><!-- /.form-group -->
                                             <!--
                                                                             <div class="form-group">
@@ -160,6 +162,32 @@
     </div>
 
 </th:block>
+
+
+<script>
+
+    alert();
+    $("#rental_date_from").datepicker({
+        onSelect: function(dateText, inst) {
+            var start = $(this).val();
+        }
+    });
+    $("#rental_date_to").datepicker({
+        onSelect: function(dateText, inst) {
+            var end = $(this).val();
+            var diff = new Date(end - start);
+
+            // get days
+            var days = diff/1000/60/60/24;
+            alert(days);
+        }
+    });
+    // var start = $('#rental_date_from').val();
+    // var end = $('#rental_date_to').val();
+
+    // end - start returns difference in milliseconds
+
+</script>
 
 
 <footer class="footer-area" style="background-image:url(/images/footer-bg.png ); background-color: #ffffff">
