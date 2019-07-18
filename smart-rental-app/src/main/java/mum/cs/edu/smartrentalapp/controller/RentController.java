@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.List;
@@ -27,13 +28,13 @@ public class RentController {
     RentService rentService;
 
 @PostMapping("/rentItem")
-public String rentItemFind(Model model, @ModelAttribute Rent rent, HttpSession session){
+public String rentItemFind(HttpServletRequest request, Model model, @ModelAttribute Rent rent, HttpSession session){
     if(session.getAttribute("user")!=null){
         LocalDate start=rent.getRentFrom();
 
         LocalDate end =rent.getRentTo();
         long daysBetween = DAYS.between(start, end);
-
+        System.out.println("ELAPSED TIME ......................."+daysBetween);
         double total_price=daysBetween*rent.getPrice();
         System.out.println("TOTAL PRICEEEEEEEEEEEEEEEEEEEEEEEE"+total_price);
         model.addAttribute("total_price",total_price);
@@ -42,6 +43,9 @@ public String rentItemFind(Model model, @ModelAttribute Rent rent, HttpSession s
         return "views/rent/payment";
     }
     else{
+        String referrer = request.getHeader("Referer");
+        session.setAttribute("url_prior_login", referrer);
+        System.out.println( "SESSION       ***********8"+referrer);
         return "redirect:/login";
     }
 
@@ -52,11 +56,9 @@ public String rentItemFind(Model model, @ModelAttribute Rent rent, HttpSession s
     public String makePayment(Model model, @ModelAttribute Payment payment, HttpSession session){
         if(session.getAttribute("user")!=null){
 
-//            double total_price=daysBetween*rent.getPrice();
-//            System.out.println("TOTAL PRICEEEEEEEEEEEEEEEEEEEEEEEE"+total_price);
-//            model.addAttribute("total_price",total_price);
+
             model.addAttribute("rent",rentService.add(payment));
-            return "redirect:/home";
+            return "views/rent/successMessage";
         }
         else{
             return "redirect:/login";

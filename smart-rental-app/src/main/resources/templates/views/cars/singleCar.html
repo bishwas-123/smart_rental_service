@@ -164,30 +164,7 @@
 </th:block>
 
 
-<script>
 
-    alert();
-    $("#rental_date_from").datepicker({
-        onSelect: function(dateText, inst) {
-            var start = $(this).val();
-        }
-    });
-    $("#rental_date_to").datepicker({
-        onSelect: function(dateText, inst) {
-            var end = $(this).val();
-            var diff = new Date(end - start);
-
-            // get days
-            var days = diff/1000/60/60/24;
-            alert(days);
-        }
-    });
-    // var start = $('#rental_date_from').val();
-    // var end = $('#rental_date_to').val();
-
-    // end - start returns difference in milliseconds
-
-</script>
 
 
 <footer class="footer-area" style="background-image:url(/images/footer-bg.png ); background-color: #ffffff">

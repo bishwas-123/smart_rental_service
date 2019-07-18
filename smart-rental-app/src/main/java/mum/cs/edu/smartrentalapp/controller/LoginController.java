@@ -26,7 +26,7 @@ public class LoginController {
     @RequestMapping(value = "/logout")
     public String logout(HttpSession session){
         session.invalidate();
-        return "views/home/index";
+        return "redirect:/home";
     }
 
     @RequestMapping(value = "/register")
@@ -45,8 +45,8 @@ public class LoginController {
 
         if (u != null){
             session.setAttribute("user",u);
+            return   "redirect:"+session.getAttribute("url_prior_login");
 
-            return "redirect:/showCategoryDetail";
         }else {
             mav.addObject("message","login failed");
             return "views/home/login";
@@ -54,7 +54,6 @@ public class LoginController {
 
     }@PostMapping(value = "/checkRegister")
     public String checkRegister(@ModelAttribute("user") User user){
-//        User u = userService.authenticate(user);
         ModelAndView mav = new ModelAndView();
         if (user != null ){
             userService.add(user);
@@ -63,10 +62,8 @@ public class LoginController {
 
         }else {
             mav.addObject("message","registration failed");
-           // mav.setViewName("views/home/register");
             return "views/home/register";
         }
-       // return mav;
 
     }
 
