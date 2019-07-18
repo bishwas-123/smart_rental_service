@@ -2,6 +2,7 @@ package mum.cs.edu.smartrentalapp.controller;
 
 import mum.cs.edu.smartrentalapp.domain.Mycar;
 import mum.cs.edu.smartrentalapp.domain.SearchFIlter;
+import mum.cs.edu.smartrentalapp.domain.rent.Rent;
 import mum.cs.edu.smartrentalapp.service.MyCarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,15 +38,16 @@ public class CarController {
     public String singleIntemDisplay(Model model, @PathVariable Long id){
          Mycar car=carService.get(id);
          model.addAttribute("singleCar",car);
+         model.addAttribute("rent",new Rent());
         return "views/cars/singleCar";
 
     }
-
-    @GetMapping("/searchItem")
-    public String searchCategory(SearchFIlter fIlter){
-        return "views/cars/serachResult";
-    }
-
+//
+//    @GetMapping("/searchItem")
+//    public String searchCategory(SearchFIlter fIlter){
+//        return "views/cars/serachResult";
+//    }
+//
 
 
 //

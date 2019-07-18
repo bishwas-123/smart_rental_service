@@ -27,7 +27,7 @@ public class LoginController {
     @RequestMapping(value = "/logout")
     public String logout(HttpSession session){
         session.invalidate();
-        return "views/home/index";
+        return "redirect:/home";
     }
 
     @RequestMapping(value = "/register")
@@ -45,9 +45,8 @@ public class LoginController {
         ModelAndView mav = new ModelAndView();
 
         if (u != null){
-            System.out.println(u +" auntheticated !!!!!!!");
             session.setAttribute("user",u);
-            return u.getRole().equalsIgnoreCase("VENDOR")? "redirect:/showCategoryDetail" :"redirect:/";
+            return session.getAttribute("url_prior_login") ==null ? "redirect:"+session.getAttribute("url_prior_login") : (u.getRole().equalsIgnoreCase("VENDOR")? )"redirect:/showCategoryDetail" :"redirect:/";
         }else {
             mav.addObject("message","login failed");
             return "views/home/login";
@@ -59,7 +58,8 @@ public class LoginController {
         ModelAndView mav = new ModelAndView();
         if (user != null ){
             userService.add(user);
-            mav.setViewName("views/home/index");
+            mav.setViewName("views/home/login");
+           // mav.setViewName("views/home/index");
 
         }else {
             mav.addObject("message","registration failed");

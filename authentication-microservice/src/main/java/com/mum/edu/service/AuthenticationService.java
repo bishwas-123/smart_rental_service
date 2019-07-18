@@ -14,8 +14,7 @@ public class AuthenticationService {
     private UserRepository userRepository;
 
     public User authenticate(String uname, String pword){
-        System.out.println("user going to be authenticated!!!! "+ uname +" "+ pword);
-        return userRepository.findByUsernameAndPassword(uname,pword);
+        return userRepository.findDistinctByUsernameAndPassword(uname,pword);
     }
 
 //    @Autowired
