@@ -1,0 +1,2 @@
+INSERT into apartment (id,name,rent_per_month,description,vendor_id,country,state,city,zip,street,contact) values (null ,'Ocean',1000.00,'Suitable for warm',1,'USA','illinois','fairfield','12333','100N','654291019');
+ INSERT into apartment (id,name,rent_per_month,description,vendor_id,country,state,city,zip,street,contact)  values (null,'Sun Rise',1000.00,'Suitable for warm',2,'Canada','illinois','fairfield','12333','100N','654291019');

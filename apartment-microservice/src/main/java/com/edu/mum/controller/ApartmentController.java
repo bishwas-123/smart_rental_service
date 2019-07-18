@@ -26,14 +26,14 @@ public class ApartmentController {
     }
 
     @PostMapping("/apartments")
-    public RedirectView add(@RequestBody Apartment book) {
-        apartmentService.add(book);
-        return new RedirectView("/apartments/" + book.getId());
+    public RedirectView add(@RequestBody Apartment apartment) {
+        apartmentService.add(apartment);
+        return new RedirectView("/apartments/" + apartment.getId());
     }
 
     @PutMapping("/apartments/{id}")
-    public void update(@RequestBody Apartment book) {
-        apartmentService.update(book);
+    public void update(@RequestBody Apartment apartment) {
+        apartmentService.update(apartment);
     }
 
     @DeleteMapping("/apartments/{id}")
